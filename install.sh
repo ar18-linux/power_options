@@ -38,9 +38,9 @@ obtain_sudo_password
 
 ar18_install "${install_dir}" "${module_name}" "${script_dir}"
 
-+u
+set +u
 ar18_deployment_target="$(read_target "${1}")"
--u
+set -u
 
 echo "${ar18_sudo_password}" | sudo -Sk chmod +x "${script_dir}/${module_name}/exec.sh"
 "${script_dir}/${module_name}/exec.sh" "${ar18_deployment_target}"
